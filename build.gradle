@@ -1,1 +1,17 @@
 apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'junit:junit:4.12'
+    compile 'org.mockito:mockito-all:1.9.5'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
