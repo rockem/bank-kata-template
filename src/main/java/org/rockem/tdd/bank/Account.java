@@ -2,16 +2,23 @@ package org.rockem.tdd.bank;
 
 public class Account {
 
-    public void deposit(int amount) {
-        // IMPLEMENT ME
+    private final TransactionRepository transactionRepository;
+    private final Printer printer = new ConsolePrinter();
+
+    public Account(Clock clock) {
+        transactionRepository = new TransactionRepository(clock);
     }
 
-    public void redraw(int amount) {
-        // IMPLEMENT ME
+    public void deposit(int amount) {
+        transactionRepository.add(amount);
+    }
+
+    public void withdraw(int amount) {
+        transactionRepository.add(-amount);
     }
 
     public void printStatement() {
-        // IMPLEMENT ME
+        new StatementPrinter(printer).print(transactionRepository);
     }
 
 }
